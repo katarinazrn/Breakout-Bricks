@@ -10,8 +10,8 @@ let colors = ['pink', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'lig
 const rows = 8;
 let cols = 10;
 
-if(canvas.height>canvas.width){
-    cols=6;
+if (canvas.height > canvas.width) {
+    cols = 6;
 }
 
 const total = rows * cols;
@@ -207,6 +207,18 @@ canvas.addEventListener('mousemove', (e) => {
     log.x = (e.clientX - offsetX) - log.w / 2;
     detectWalls();
 });
+
+canvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    let touch = e.touches[0];
+    let x = touch.clientX;
+
+    log.x = (x - offsetX) - log.w / 2;
+    detectWalls();
+});
+
+
+
 
 document.addEventListener('click', () => {
     gameStarted = true;
