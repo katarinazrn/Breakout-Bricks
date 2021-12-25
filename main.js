@@ -51,17 +51,17 @@ const init = () => {
 
     log = {
         color: 'cornflowerblue',
-        w: canvas.width / 6,
+        w: canvas.height < canvas.width ? (canvas.width / 6) : (canvas.width / 3),
         h: 10,
-        x: canvas.width / 2 - (canvas.width / 6) / 2,
-        y: canvas.height - 30
+        x:  canvas.height < canvas.width ? (canvas.width / 2 - (canvas.width / 6) / 2): (canvas.width / 2 - (canvas.width / 3) / 2) ,
+        y: canvas.height - 10
     }
 
     ball = {
         color: 'white',
         r: 10,
         x: canvas.width / 2,
-        y: canvas.height - 40,
+        y: canvas.height - 20,
         dx: -5,
         dy: -5
     }
@@ -216,8 +216,6 @@ canvas.addEventListener('touchmove', (e) => {
     log.x = (x - offsetX) - log.w / 2;
     detectWalls();
 });
-
-
 
 
 document.addEventListener('click', () => {
